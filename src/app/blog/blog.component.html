@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="post" *ngFor="let post of blogs">
+        <img class="image" [src]="post.image">
+        <div class="author">{{ post.author| uppercase }}</div>
+        <div class="title">{{ post.title| titlecase }}</div>
+        <div class="text">{{ post.text| slice:0:45 }}</div>
+    </div>
+</div>

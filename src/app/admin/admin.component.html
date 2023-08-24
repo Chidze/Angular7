@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="blogs">Blogs</div>
+<div class="admin">
+    <input type="text" class="title" placeholder="title here..." [(ngModel)]="title">
+    <textarea class="text" placeholder="text here..." [(ngModel)]="text"></textarea>
+    <input type="text" class="author" placeholder="author here.." [(ngModel)]="author">
+    <ng-container *ngIf="!save; else elseTemplate">
+    <button type="button" class="add" (click)="addBlog()" [disabled]="!text||!author||!title">Add</button>
+    </ng-container>
+    <ng-template #elseTemplate>
+    <button type="button" class="save" (click)="saveEdit()" [disabled]="!text||!author||!title">Save edit</button>
+    </ng-template>
+    <table class="table">
+        <thead class="table-head">
+            <tr>
+                <th class="th">#</th>
+                <th class="th">Title</th>
+                <th class="th">Text</th>
+                <th class="th">Author</th>
+                <th class="th">Edit</th>
+                <th class="th">Delete</th>
+            </tr>
+        </thead>
+        <tbody class="tableBody" *ngFor="let item of blogs">
+            <tr>
+            <th class="th">{{ item.id }}</th>
+                <th class="th">{{ item.title }}</th>
+                <th class="th">{{ item.text }}</th>
+                <th class="th">{{ item.author }}</th>
+                <th class="th"><button type="button" class="edit" (click)="editBlog(item)">Edit</button></th>
+                <th class="th"><button type="button" class="delete" (click)="deleteBlog(item)">Delete</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
